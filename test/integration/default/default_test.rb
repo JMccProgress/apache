@@ -10,7 +10,7 @@ describe package('apache2') do
   it { should be_installed }
 end
 
-describle file('/var/www/html/index.html') do
+describe file('/var/www/html/index.html') do
   it { should exist }
   its('content') { should match(/Yello pipelinE World!/) }
 end
