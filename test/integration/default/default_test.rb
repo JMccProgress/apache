@@ -7,18 +7,15 @@ describe port(80) do
 end
 
 describe package('apache2') do
-   it { should be_installed }
+  it { should be_installed }
 end
 
-describle file( '/var/www/html/index.html' ) do
+describle file('/var/www/html/index.html') do
   it { should exist }
-  its('content') {should match(/Yello pipelinE World!/)}
+  its('content') { should match(/Yello pipelinE World!/) }
 end
 
 describe upstart_service('apache2') do
-  it {should be_enabled}
-  it {should be_running}
+  it { should be_enabled }
+  it { should be_running }
 end
-
-                              
-
