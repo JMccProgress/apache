@@ -30,7 +30,6 @@ pipeline {
                         }
 
                 }
-                /*
                 stage('installing Kitchen Docker Gem') {
                         steps {
                                 sh 'sudo apt-get install -y make gcc'
@@ -79,7 +78,6 @@ pipeline {
                                 input 'please approve or deny'
                         }
                  }
-                 */
                 stage('Upload to Chef Infra Server, Converge Nodes'){
                         steps{
                                 withCredentials([zip(credentialsId: 'chef-starter-zip', variable: 'CHEFREPO')]) {
