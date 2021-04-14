@@ -12,7 +12,7 @@ end
 
 describe file('/var/www/html/index.html') do
   it { should exist }
-  its('content') { should match(/Yello pipelinE World!/) }
+  its('content') { should match(/this is a test page/) }
 end
 
 describe upstart_service('apache2') do
