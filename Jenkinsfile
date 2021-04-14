@@ -32,9 +32,9 @@ pipeline {
                         }
 
                 }
-                stage('three') {
+                stage('download apache cookbook') {
                         steps{
-                              echo "three"
+                              git credentialsId: 'git-repo-creds', url: 'git@github.com:JMccProgress/apache.git'
                         }
 
                 }
