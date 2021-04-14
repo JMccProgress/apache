@@ -61,14 +61,36 @@ pipeline {
                              }
 
                 }
-                                stage('Run kitchen destroy - tidy up') {
+                stage('Run kitchen destroy - tidy up') {
                         steps {
                                 sh 'kitchen destroy'
                              }
 
                 }
+                stage('Send Slack Notification') {
+                        steps {
+                                echo 'hello'
+                        slackSend color: 'warning', message: "please approve - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.JOB_URL} | Open>)"
+                        }
+                }
+                stage('request input'){
+                        steps{
+                                input 'please approve or deny'
+                        }
+                 }
     }
+    post{
+            success{
 
+                    slackSend color: 'warning', message: "SUCCESS! - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.JOB_URL} | Open>)"
+                    
+
+            }
+            failure{
+                    slackSend color: 'error', message: "FAILURE! - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.JOB_URL} | Open>)"
+
+            }
+    }
 
 
 
