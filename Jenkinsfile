@@ -51,7 +51,7 @@ pipeline {
                 }
                 stage('Run kitchen converge') {
                         steps {
-                                sh 'kitchen converve'
+                                sh 'kitchen converge'
                              }
 
                 }
